@@ -1,0 +1,38 @@
+@import "./../globals.scss";
+
+h1.title {
+    columns: #ffffff;
+    color: white;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 5px white;
+}
+h3.title {
+    columns: #ffffff;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 5px white;
+}
+
+div.picture-title {
+    columns: #ffffff;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 5px #cccccc;
+    padding-bottom: 10px;
+}
+
+div.picture-explanation{
+    columns: #ffffff;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 5px #cccccc;
+}
+
+img.APOD{
+    border: #cccccc solid 3px;
+}

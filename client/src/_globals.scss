@@ -1,0 +1,27 @@
+@import "~bootstrap/scss/bootstrap";
+$tablet: "screen and (max-width:660px)";
+$phone: "screen and (max-width:660px)";
+$accent-color:#157347;
+$text-color:#ffffff;
+$background-color:#333333;
+$greyed-color: #C0C0C0;
+
+html, body {
+    margin:0px;
+    height:100%;
+    background: $background-color;
+}
+
+#root {
+    background: $background-color;
+    height:100%; 
+    color: $text-color;
+  }
+
+@mixin display-flex() {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
