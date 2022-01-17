@@ -43,7 +43,7 @@ function App() {
       </Switch>
       <footer>
         <Container>
-          <div className="footer">&copy; 2022 - <a href="https://ethanfarrell.ca" target="_blank">Ethan Farrell</a></div>
+          <div className="footer">&copy; 2022 - <a href="https://ethanfarrell.ca" target="_blank" className="footer-link">Ethan Farrell's Web Design</a></div>
         </Container>
       </footer>
     </div>

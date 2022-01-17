@@ -17,7 +17,7 @@ const Home = ({setLoading}:HomeProps) => {
     const onResponse = (result:APODData) => {
         setData(result);
         console.log(result);
-        setLoading(false);
+        // setLoading(false);
     };
 
     const onError = () => console.log("*** Error has occured during AJAX data transmission");
@@ -45,7 +45,7 @@ const Home = ({setLoading}:HomeProps) => {
             <h3 className="title">Todays date is: {data.date}</h3>
             <div>
                 <div className="picture-title">{data.title}</div>
-                <a href={data.hdurl} target="_blank"><img className="APOD" src={data.url} /></a>
+                <a href={data.hdurl} target="_blank"><img className="APOD" src={data.url} onLoad={() => setLoading(false)}/></a>
                 <div className="picture-explanation">Photo Explanation:</div>
                 <div>{data.explanation}</div>
             </div>
