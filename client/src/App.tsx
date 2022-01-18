@@ -6,6 +6,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import LoadingOverlay from "./LoadingOverlay/LoadingOverlay";
 import Error from "./Error/Error";
 import Home from "./Home/Home";
+import Asteroids from "./Asteroids/Asteroids";
 
 
 
@@ -30,6 +31,7 @@ function App() {
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/asteroid">Asteroids</Nav.Link>
             </Nav>
             </Navbar.Collapse>  
           </Container>
@@ -38,6 +40,7 @@ function App() {
       <Switch>
 
         <Route path="/" render={()=><Home setLoading={setLoading}/>} exact/>
+        <Route path="/asteroid" render={() => <Asteroids setLoading={setLoading}/>} exact/>
         <Route render={()=><Error/>}/>
 
       </Switch>

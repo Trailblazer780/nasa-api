@@ -46,6 +46,7 @@ const Home = ({setLoading}:HomeProps) => {
             <div>
                 <div className="picture-title">{data.title}</div>
                 <a href={data.hdurl} target="_blank"><img className="APOD" src={data.url} onLoad={() => setLoading(false)}/></a>
+                <p>Click the photo to see the full resolution picture</p>
                 <div className="picture-explanation">Photo Explanation:</div>
                 <div>{data.explanation}</div>
             </div>
