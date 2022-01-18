@@ -8,6 +8,7 @@ import Error from "./Error/Error";
 import Home from "./Home/Home";
 import Asteroids from "./Asteroids/Asteroids";
 import AsteroidData from "./AsteroidData/AsteroidData";
+import MarsRoverPhotos from './MarsRoverPhotos/MarsRoverPhotos';
 
 
 
@@ -33,6 +34,7 @@ function App() {
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/asteroids">Asteroids</Nav.Link>
+              <Nav.Link href="/mars-rover-home">Mars Rover</Nav.Link>
             </Nav>
             </Navbar.Collapse>  
           </Container>
@@ -43,6 +45,7 @@ function App() {
         <Route path="/" render={()=><Home setLoading={setLoading}/>} exact/>
         <Route path="/asteroids" render={() => <Asteroids setLoading={setLoading}/>} exact/>
         <Route path="/asteroid/:id" render={() => <AsteroidData setLoading={setLoading}/>} exact/>
+        <Route path="mars-rover-home" render={() => <MarsRoverPhotos setLoading={setLoading}/>}/>
         <Route render={()=><Error/>}/>
 
       </Switch>
