@@ -31,7 +31,7 @@ function App() {
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/asteroid">Asteroids</Nav.Link>
+              <Nav.Link href="/asteroids">Asteroids</Nav.Link>
             </Nav>
             </Navbar.Collapse>  
           </Container>
@@ -40,7 +40,7 @@ function App() {
       <Switch>
 
         <Route path="/" render={()=><Home setLoading={setLoading}/>} exact/>
-        <Route path="/asteroid" render={() => <Asteroids setLoading={setLoading}/>} exact/>
+        <Route path="/asteroids" render={() => <Asteroids setLoading={setLoading}/>} exact/>
         <Route render={()=><Error/>}/>
 
       </Switch>

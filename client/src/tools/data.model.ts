@@ -75,7 +75,7 @@ export interface Feet {
 }
 
 export interface CloseApproachData {
-    close_approach_data: CloseApproach[];
+    close_approach_data: CloseApproach;
 }
 
 export interface CloseApproach {

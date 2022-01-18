@@ -53,38 +53,26 @@ const Asteroids = ({setLoading}:HomeProps) => {
         :
         <Container className="text-center">
             <h1 className="title">Asteroids Near Earth Today: {data.element_count}</h1>
-            <Table striped bordered hover>
+            <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
                         <th>Asteroid ID</th>
                         <th>Asteroid Name</th>
-                        <th>Asteroid Velocity</th>
-                        <th>Asteroid Size</th>
-                        <th>Asteroid Distance</th>
+                        <th>Asteroid Velocity (Km/h)</th>
+                        <th>Asteroid Diameter (km)</th>
+                        <th>Asteroid Distance (km)</th>
+                        <th>Potentially Hazardous</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data2.map((asteroid:Asteroid) => {return <tr><td>{asteroid.id}</td><td>{asteroid.name}</td>{asteroid.close_approach_data.map((closeApproach:any) => {return <td>{closeApproach.relative_velocity.kilometers_per_hour}</td>})}</tr>})}
-                    {/* {data2.map((asteroid:Asteroid) => {return <tr><td>{asteroid.name}</td></tr>})} */}
-                    <td>Velocity</td>
-                    <td>size</td>
-                    <td>Distance</td>
+                    {data2.map((asteroid:Asteroid) => {return <tr><td>{asteroid.id}</td>
+                    <td>{asteroid.name}</td>
+                    {asteroid.close_approach_data.map((closeApproach:any) => {return <td>{closeApproach.relative_velocity.kilometers_per_hour}</td>})}
+                    <td>{asteroid.estimated_diameter.kilometers.estimated_diameter_max}</td>
+                    {asteroid.close_approach_data.map((closeApproach:any) => {return <td>{closeApproach.miss_distance.kilometers}</td>})}
+                    <td>{asteroid.is_potentially_hazardous_asteroid.toString()}</td></tr>})}
                 </tbody>
             </Table>
-
-            <div>
-                (asteroid count: {data.near_earth_objects['2022-01-18'].length})
-                {data2.map((asteroid:Asteroid) => {
-                    return <div className="asteroid">
-                        <div className="asteroid-name">{asteroid.name} {asteroid.estimated_diameter.kilometers.estimated_diameter_max}</div>
-                        {asteroid.close_approach_data.map((closeApproach:any) => {
-                            return <div>{closeApproach.close_approach_date} {closeApproach.miss_distance.kilometers}</div>
-                        })}
-                        </div>
-                })}
-            </div>
-
-            
         </Container>
     );
 }
