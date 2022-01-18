@@ -1,7 +1,7 @@
 import React from 'react';
 import { HomeProps } from '../tools/data.model';
 import { Link, useParams } from 'react-router-dom';
-import { Container, Table } from 'react-bootstrap';
+import { Container, Table, Form, Button } from 'react-bootstrap';
 import { getJSONData } from '../tools/Toolkit';
 
 const MarsRoverPhotos = ({setLoading}:HomeProps) => {
@@ -12,15 +12,20 @@ const MarsRoverPhotos = ({setLoading}:HomeProps) => {
         setLoading(false);
     };
 
+    const load = () => {
+        setLoading(false);
+    }
+
     const onError = () => console.log("*** Error has occured during AJAX data transmission");
 
     const reRender = () => {
-        setLoading(true);
+        // setLoading(true);
         // getJSONData(, onResponse, onError);
     };
 
     // ---------------------------------------------- lifecycle hooks ----------------------------------------------
-    React.useEffect(() => {reRender();}, []);
+    // React.useEffect(() => {reRender();}, []);
+    React.useEffect(() => {load();}, []);
 
     // -------------------------------------------------- State Setup --------------------------------------------------
     const [data, setData] = React.useState<any>();

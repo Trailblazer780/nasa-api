@@ -45,7 +45,7 @@ function App() {
         <Route path="/" render={()=><Home setLoading={setLoading}/>} exact/>
         <Route path="/asteroids" render={() => <Asteroids setLoading={setLoading}/>} exact/>
         <Route path="/asteroid/:id" render={() => <AsteroidData setLoading={setLoading}/>} exact/>
-        <Route path="mars-rover-home" render={() => <MarsRoverPhotos setLoading={setLoading}/>}/>
+        <Route path="/mars-rover-home" render={() => <MarsRoverPhotos setLoading={setLoading}/>}/>
         <Route render={()=><Error/>}/>
 
       </Switch>

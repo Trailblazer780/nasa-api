@@ -23,10 +23,6 @@ export interface Links{
     prev: string;
 }
 
-// export interface AsteroidToday {
-//     '2022-01-18': Asteroid[];
-// }
-
 export interface Asteroid {
     id: string;
     neo_reference_id: string;
@@ -123,6 +119,35 @@ export interface OrbitClass {
     orbit_class_type: string;
     orbit_class_description: string;
     orbit_class_range: string;
+}
+// ---------------------------------------- Mars Rover Data ----------------------------------------
+
+export interface MarsRoverPhotosData {
+    photos: Photo[];
+}
+
+export interface Photo {
+    id: number;
+    sol: number;
+    camera: Camera;
+    img_src: string;
+    earth_date: string;
+    rover: Rover;
+}
+
+export interface Camera {
+    id: number;
+    name: string;
+    rover_id: number;
+    full_name: string;
+}
+
+export interface Rover {
+    id: number;
+    name: string;
+    landing_date: string;
+    launch_date: string;
+    status: string;
 }
 
 // ---------------------------------------- Web Application Data ----------------------------------------
