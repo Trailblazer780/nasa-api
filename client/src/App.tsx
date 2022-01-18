@@ -33,7 +33,7 @@ function App() {
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/asteroids">Asteroids</Nav.Link>
+              <Nav.Link href="/asteroids">Near Earth Asteroids</Nav.Link>
               <Nav.Link href="/mars-rover-home">Mars Rover</Nav.Link>
             </Nav>
             </Navbar.Collapse>  
@@ -51,7 +51,7 @@ function App() {
       </Switch>
       <footer>
         <Container>
-          <div className="footer">&copy; 2022 - <a href="https://ethanfarrell.ca" target="_blank" className="footer-link">Ethan Farrell's Web Design</a></div>
+          <div className="footer">&copy; 2022 - <a href="https://ethanfarrell.ca" target="_blank" className="footer-link">Ethan Farrell's Web Design</a> - Powered by: <a href="https://api.nasa.gov/" target="_blank" className="footer-link">NASA Open API</a></div>
         </Container>
       </footer>
     </div>

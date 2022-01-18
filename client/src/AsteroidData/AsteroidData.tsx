@@ -69,6 +69,28 @@ const AsteroidData = ({setLoading}:HomeProps) => {
                     <tr><td>Estimated Diameter Minimum (ft)</td><td>{data.estimated_diameter.feet.estimated_diameter_min.toFixed(2)}</td></tr>
                 </tbody>
             </Table>
+
+            <h1 className="title">Close Approach Data:</h1>
+            <Table striped bordered hover variant="dark">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Velocity (Km/h)</th>
+                        <th>Miss Distance (Km)</th>
+                        <th>Orbiting Body</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {/* <tr><td></td><td></td></tr> */}
+                    {data.close_approach_data.map((closeApproach:CloseApproach) => {
+                        return <tr><td>{closeApproach.close_approach_date_full}</td>
+                        <td>{parseFloat(closeApproach.relative_velocity.kilometers_per_hour).toFixed(2)}</td>
+                        <td>{parseFloat(closeApproach.miss_distance.kilometers).toFixed(2)}</td>
+                        <td>{closeApproach.orbiting_body}</td></tr>
+                    })}
+                    
+                </tbody>
+            </Table>
         </Container>
     );
 }
