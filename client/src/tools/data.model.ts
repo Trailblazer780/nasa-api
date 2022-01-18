@@ -22,7 +22,7 @@ console.log(date + "/" + month + "/" + year);
 export interface AsteroidTodayData {
     links: Links;
     element_count: number;
-    near_earth_objects: AsteroidToday;
+    near_earth_objects: any;
 }
 
 export interface Links{
@@ -31,9 +31,9 @@ export interface Links{
     prev: string;
 }
 
-export interface AsteroidToday {
-    '2022-01-18': Asteroid[];
-}
+// export interface AsteroidToday {
+//     '2022-01-18': Asteroid[];
+// }
 
 export interface Asteroid {
     id: string;
@@ -43,7 +43,8 @@ export interface Asteroid {
     absolute_magnitude_h: number;
     estimated_diameter: EstimatedDiameter;
     is_potentially_hazardous_asteroid: boolean;
-    close_approach_data: CloseApproachData[];
+    close_approach_data: CloseApproach[];
+    orbital_data: OrbitalData;
     is_sentry_object: boolean;
 }
 
@@ -75,7 +76,7 @@ export interface Feet {
 }
 
 export interface CloseApproachData {
-    close_approach_data: CloseApproach;
+    close_approach_data: CloseApproach[];
 }
 
 export interface CloseApproach {
@@ -88,16 +89,48 @@ export interface CloseApproach {
 }
 
 export interface RelativeVelocity {
-    kilometers_per_second: number;
-    kilometers_per_hour: number;
-    miles_per_hour: number;
+    kilometers_per_second: string;
+    kilometers_per_hour: string;
+    miles_per_hour: string;
 }
 
 export interface MissDistance {
-    astronomical: number;
-    lunar: number;
-    kilometers: number;
-    miles: number;
+    astronomical: string;
+    lunar: string;
+    kilometers: string;
+    miles: string;
+}
+
+export interface OrbitalData {
+    orbit_id: string;
+    orbit_determination_date: string;
+    first_observation_date: string;
+    last_observation_date: string;
+    date_arc_in_days: number;
+    observations_used: number;
+    orbit_uncertainty: string;
+    minimum_orbit_intersection: string;
+    jupiter_tisserand_invariant: string;
+    epoch_osculation: string;
+    eccentricity: string;
+    semi_major_axis: string;
+    inclination: string;
+    ascending_node_longitude: string;
+    orbital_period: string;
+    perihelion_distance: string;
+    perihelion_argument: string;
+    aphelion_distance: string;
+    perihelion_time: string;
+    mean_anomaly: string;
+    mean_motion: string;
+    equinox: string;
+    orbit_class: OrbitClass;
+}
+
+export interface OrbitClass {
+    orbit_class_type: string;
+    orbit_class_description: string;
+    orbit_class_range: string;
 }
 
 // ---------------------------------------- Web Application Data ----------------------------------------

@@ -7,6 +7,7 @@ import LoadingOverlay from "./LoadingOverlay/LoadingOverlay";
 import Error from "./Error/Error";
 import Home from "./Home/Home";
 import Asteroids from "./Asteroids/Asteroids";
+import AsteroidData from "./AsteroidData/AsteroidData";
 
 
 
@@ -41,6 +42,7 @@ function App() {
 
         <Route path="/" render={()=><Home setLoading={setLoading}/>} exact/>
         <Route path="/asteroids" render={() => <Asteroids setLoading={setLoading}/>} exact/>
+        <Route path="/asteroid/:id" render={() => <AsteroidData setLoading={setLoading}/>} exact/>
         <Route render={()=><Error/>}/>
 
       </Switch>

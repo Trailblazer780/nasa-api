@@ -1,7 +1,8 @@
 import React from 'react';
 import './Asteroids.scss';
+import {Link, useParams } from 'react-router-dom';
 import { Container, Table } from 'react-bootstrap';
-import { HomeProps, AsteroidTodayData, AsteroidToday, Asteroid, CloseApproach, CloseApproachData } from '../tools/data.model';
+import { HomeProps, AsteroidTodayData, Asteroid, CloseApproach} from '../tools/data.model';
 import { getJSONData } from "./../tools/Toolkit";
 
 
@@ -10,7 +11,6 @@ const NEOW_SCRIPT:string = "http://www.neowsapp.com/rest/v1/feed/today";
 const APOD_SCRIPT:string = "https://api.nasa.gov/planetary/apod?api_key=" + API_KEY;
 
 const Asteroids = ({setLoading}:HomeProps) => {
-
 
     // ---------------------------------------------- event handlers ----------------------------------------------
     const onResponse = (result:AsteroidTodayData) => {
@@ -22,37 +22,49 @@ const Asteroids = ({setLoading}:HomeProps) => {
     const onError = () => console.log("*** Error has occured during AJAX data transmission");
 
     const reRender = () => {
+        setLoading(true);
         getJSONData(NEOW_SCRIPT, onResponse, onError);
     };
+
+    const getDate = () => {
+        let monthString:string = "";
+        let date:Date = new Date();
+        let day:number = date.getDate();
+        let month:number = date.getMonth() + 1;
+        if(month < 10){
+            monthString = "0" + month;
+        }
+        else{
+            monthString = month.toString();
+        }
+        let year = date.getFullYear();
+        let fullDay = year + "-" + monthString + "-" + day;
+        console.log(fullDay);
+        return fullDay;
+    }
     
     // ---------------------------------------------- lifecycle hooks ----------------------------------------------
     React.useEffect(() => {reRender();}, []);
 
     // -------------------------------------------------- State Setup --------------------------------------------------
     const [data, setData] = React.useState<AsteroidTodayData>();
-    const [asteroidToday, setAsteroidToday] = React.useState<AsteroidToday[]>([]);
+    // const [asteroidToday, setAsteroidToday] = React.useState<AsteroidToday[]>([]);
 
-    let date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    let fullDay = year + "-" + month + "-" + day;
     let data2;
     if(data !== undefined) {
-        data2 = data.near_earth_objects['2022-01-18'];
-    };
-
+        data2 = data.near_earth_objects[getDate()];
+    }
 
     // let data2 = data.near_earth_objects['2022-01-17'];
     // ---------------------------------- render to the DOM
     return(
-        (data === undefined || asteroidToday === undefined || data2 === undefined) ?
+        (data === undefined  || data2 === undefined) ?
             <div className="content">
                 <div>Sorry no Near Earth Asteroid Data right now.</div>
             </div>
         :
         <Container className="text-center">
-            <h1 className="title">Asteroids Near Earth Today: {data.element_count}</h1>
+            <h1 className="title">Asteroids Near Earth Right Now: {data.element_count}</h1>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
@@ -65,12 +77,12 @@ const Asteroids = ({setLoading}:HomeProps) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data2.map((asteroid:Asteroid) => {return <tr><td>{asteroid.id}</td>
+                    {data2.map((asteroid:Asteroid, x:number) => {return <tr key={x}><td><Link to={`asteroid/`+asteroid.id}>{asteroid.id}</Link></td>
                     <td>{asteroid.name}</td>
-                    {asteroid.close_approach_data.map((closeApproach:any) => {return <td>{closeApproach.relative_velocity.kilometers_per_hour}</td>})}
-                    <td>{asteroid.estimated_diameter.kilometers.estimated_diameter_max}</td>
-                    {asteroid.close_approach_data.map((closeApproach:any) => {return <td>{closeApproach.miss_distance.kilometers}</td>})}
-                    <td>{asteroid.is_potentially_hazardous_asteroid.toString()}</td></tr>})}
+                    {asteroid.close_approach_data.map((closeApproach:CloseApproach, y:number) => {let velocity = parseFloat(closeApproach.relative_velocity.kilometers_per_hour).toFixed(2); return <td key={y}>{velocity}</td>})}
+                    <td>{asteroid.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)}</td>
+                    {asteroid.close_approach_data.map((closeApproach:any, z:number) => {let distance = parseFloat(closeApproach.miss_distance.kilometers).toFixed(2); return <td key={z}>{distance}</td>})}
+                    <td>{asteroid.is_potentially_hazardous_asteroid ? "Yes" : "No"}</td></tr>})}
                 </tbody>
             </Table>
         </Container>
