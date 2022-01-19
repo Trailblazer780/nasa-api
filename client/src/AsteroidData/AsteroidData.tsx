@@ -1,7 +1,7 @@
 import React from 'react';
 import './AsteroidData.scss';
-import { Container, Table } from 'react-bootstrap';
-import {Link, useParams } from 'react-router-dom';
+import { Container, Table, Button } from 'react-bootstrap';
+import {Link, useParams, useHistory } from 'react-router-dom';
 import { HomeProps, AsteroidTodayData, Asteroid, CloseApproach} from '../tools/data.model';
 import { getJSONData } from "../tools/Toolkit";
 
@@ -11,6 +11,8 @@ const AsteroidData = ({setLoading}:HomeProps) => {
 
     let { id } = useParams<{ id: string }>(); 
     let ASTEROID_DATA:string = "https://api.nasa.gov/neo/rest/v1/neo/"+id+"?api_key=" + API_KEY;
+
+    let history = useHistory();
 
     // ---------------------------------------------- event handlers ----------------------------------------------
     const onResponse = (result:Asteroid) => {
@@ -33,11 +35,6 @@ const AsteroidData = ({setLoading}:HomeProps) => {
     const [data, setData] = React.useState<Asteroid>();
     // const [asteroidToday, setAsteroidToday] = React.useState<AsteroidToday[]>([]);
 
-    // let data2;
-    // if(data !== undefined) {
-    //     data2 = data.near_earth_objects;
-    // }
-
     // ---------------------------------- render to the DOM
     return(
         (data === undefined) ?
@@ -48,6 +45,7 @@ const AsteroidData = ({setLoading}:HomeProps) => {
         <Container className="text-center">
             <h1 className="title">{data.name}</h1>
             <h3>Data About Asteroid:</h3>
+            <Button className="backButton" variant="secondary" onClick={() => history.goBack()}>Back</Button>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
@@ -63,10 +61,8 @@ const AsteroidData = ({setLoading}:HomeProps) => {
                     <tr><td>Potential Hazard</td><td>{data.is_potentially_hazardous_asteroid ? "Yes" : "No"}</td></tr>
                     <tr><td>Absolute Magnitude</td><td>{data.absolute_magnitude_h}</td></tr>
                     <tr><td>Orbit Class</td><td>{data.orbital_data.orbit_class.orbit_class_type}</td></tr>
-                    <tr><td>Estimated Diameter Maximum (km)</td><td>{data.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)}</td></tr>
-                    <tr><td>Estimated Diameter Minimum (km)</td><td>{data.estimated_diameter.kilometers.estimated_diameter_min.toFixed(2)}</td></tr>
-                    <tr><td>Estimated Diameter Maximum (ft)</td><td>{data.estimated_diameter.feet.estimated_diameter_max.toFixed(2)}</td></tr>
-                    <tr><td>Estimated Diameter Minimum (ft)</td><td>{data.estimated_diameter.feet.estimated_diameter_min.toFixed(2)}</td></tr>
+                    <tr><td>Estimated Diameter min/max (km)</td><td>{data.estimated_diameter.kilometers.estimated_diameter_min.toFixed(2)}/{data.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)}</td></tr>
+                    <tr><td>Estimated Diameter min/max (ft)</td><td>{data.estimated_diameter.feet.estimated_diameter_min.toFixed(2)}/{data.estimated_diameter.feet.estimated_diameter_max.toFixed(2)}</td></tr>
                 </tbody>
             </Table>
 
@@ -82,8 +78,8 @@ const AsteroidData = ({setLoading}:HomeProps) => {
                 </thead>
                 <tbody>
                 {/* <tr><td></td><td></td></tr> */}
-                    {data.close_approach_data.map((closeApproach:CloseApproach) => {
-                        return <tr><td>{closeApproach.close_approach_date_full}</td>
+                    {data.close_approach_data.map((closeApproach:CloseApproach, n:number) => {
+                        return <tr key={n}><td>{closeApproach.close_approach_date_full}</td>
                         <td>{parseFloat(closeApproach.relative_velocity.kilometers_per_hour).toFixed(2)}</td>
                         <td>{parseFloat(closeApproach.miss_distance.kilometers).toFixed(2)}</td>
                         <td>{closeApproach.orbiting_body}</td></tr>

@@ -1,1 +1,9 @@
 @import "./../globals.scss";
+
+.backButton{
+    // make button far left of container
+    position: absolute;
+    // float: left;
+    display: flex;
+    justify-content: flex-start;
+}
