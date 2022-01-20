@@ -58,7 +58,7 @@ const AsteroidData = ({setLoading}:HomeProps) => {
                     <tr><td>Date First Observed [YYYY-MM-DD]</td><td>{data.orbital_data.first_observation_date}</td></tr>
                     <tr><td>Most Recent Observation [YYYY-MM-DD]</td><td>{data.orbital_data.last_observation_date}</td></tr>
                     <tr><td>Orbit ID</td><td>{data.orbital_data.orbit_id}</td></tr>
-                    <tr><td>Potential Hazard</td><td>{data.is_potentially_hazardous_asteroid ? "Yes" : "No"}</td></tr>
+                    <tr><td>Potential Hazard</td>{data.is_potentially_hazardous_asteroid ? <td style={{color: "red"}}>Yes</td> : <td style={{color: "green"}}>No</td>}</tr>
                     <tr><td>Absolute Magnitude</td><td>{data.absolute_magnitude_h}</td></tr>
                     <tr><td>Orbit Class</td><td>{data.orbital_data.orbit_class.orbit_class_type}</td></tr>
                     <tr><td>Estimated Diameter min/max (km)</td><td>{data.estimated_diameter.kilometers.estimated_diameter_min.toFixed(2)}/{data.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)}</td></tr>

@@ -18,6 +18,7 @@ const EPIC = ({setLoading}:HomeProps) => {
     let history = useHistory();
     let dateForUrl:string = "";
     let data2:EpicImage[] = []
+    let pictureFrom:string = "";
     // ---------------------------------------------- event handlers ----------------------------------------------
     const onResponse = (result:any) => {
         setData(result);
@@ -38,10 +39,12 @@ const EPIC = ({setLoading}:HomeProps) => {
     // -------------------------------------------------- State Setup --------------------------------------------------
     const [data, setData] = React.useState<EpicImage[]>([]);
     const [url, setUrl] = React.useState<string>();
+    const [pictureFrom2, setPictureFrom2] = React.useState<string>();
 
     // ---------------------------------------------- lifecycle hooks ----------------------------------------------
     React.useEffect(() => {reRender();}, []);
     React.useEffect(() => {return () => {buildurl();}}, [data]);
+    React.useEffect(() => {return () => {getPictureFrom();}}, [data]);
 
 
     const buildurl = () => {
@@ -59,7 +62,15 @@ const EPIC = ({setLoading}:HomeProps) => {
         setUrl(dateForUrl);
         console.log(dateForUrl);
         return dateForUrl;
-    }   
+    }
+
+    const getPictureFrom = () => {
+        if(data2.length > 0){
+            pictureFrom = data2[0].caption;
+            console.log(pictureFrom);
+            setPictureFrom2(pictureFrom);
+        }
+    }
 
     const imagesLoaded = () => {
         if (loaded === data2.length) {
@@ -79,9 +90,8 @@ const EPIC = ({setLoading}:HomeProps) => {
         :
         <Container className="text-center">
             <h1 className="title">Most Recent EPIC Photos</h1>
-            <h2>there are {data.length} image</h2>
-            <h2>{url}</h2>
-            <h3>{data.map((images:EpicImage, n:number) =>{ return <div key={n}>{images.image}<img onLoad={() => imagesLoaded()} height={100} width={100} src={EPIC_IMAGE+url+"png/"+images.image+".png"}/></div> })}</h3>
+            <h3>These images were taken by Nasa's EPIC camera onboard the NOAA DSCOVR spacecraft</h3>
+            <h3>{data.map((images:EpicImage, n:number) =>{ return <div key={n}><img onLoad={() => imagesLoaded()} height={500} width={500} src={EPIC_IMAGE+url+"png/"+images.image+".png"}/></div> })}</h3>
         </Container>
 
     );

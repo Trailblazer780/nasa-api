@@ -87,7 +87,7 @@ const Asteroids = ({setLoading}:HomeProps) => {
                     {asteroid.close_approach_data.map((closeApproach:CloseApproach, y:number) => {let velocity = parseFloat(closeApproach.relative_velocity.kilometers_per_hour).toFixed(2); return <td key={y}>{velocity}</td>})}
                     <td>{asteroid.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)}</td>
                     {asteroid.close_approach_data.map((closeApproach:any, z:number) => {let distance = parseFloat(closeApproach.miss_distance.kilometers).toFixed(2); return <td key={z}>{distance}</td>})}
-                    <td>{asteroid.is_potentially_hazardous_asteroid ? "Yes" : "No"}</td></tr>})}
+                    {asteroid.is_potentially_hazardous_asteroid ? <td style={{color: "red"}}>Yes</td> : <td style={{color: "green"}}>No</td>}</tr>})}
                 </tbody>
             </Table>
         </Container>
