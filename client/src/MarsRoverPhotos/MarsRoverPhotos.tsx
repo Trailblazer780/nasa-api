@@ -33,6 +33,7 @@ const MarsRoverPhotos = ({setLoading}:HomeProps) => {
     return (
         <Container className="text-center">
             <h1 className="title">Mars Rover Photos</h1>
+            <h1 className="title">Coming Soon!</h1>
         </Container>
     );
 }

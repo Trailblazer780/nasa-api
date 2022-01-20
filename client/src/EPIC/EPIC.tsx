@@ -17,12 +17,14 @@ const EPIC = ({setLoading}:HomeProps) => {
 
     let history = useHistory();
     let dateForUrl:string = "";
+    let data2:EpicImage[] = []
     // ---------------------------------------------- event handlers ----------------------------------------------
     const onResponse = (result:any) => {
         setData(result);
+        data2 = result;
         console.log(result);
         setLoading(false);
-        buildurl();
+        // buildurl();
     };
 
     const onError = () => console.log("*** Error has occured during AJAX data transmission");
@@ -31,24 +33,23 @@ const EPIC = ({setLoading}:HomeProps) => {
         setLoading(true);
         getJSONData(EPIC_MOST_RECENT, onResponse, onError);
     };
+
+    
+    // -------------------------------------------------- State Setup --------------------------------------------------
+    const [data, setData] = React.useState<EpicImage[]>([]);
+    const [url, setUrl] = React.useState<string>();
     
     // ---------------------------------------------- lifecycle hooks ----------------------------------------------
     React.useEffect(() => {reRender();}, []);
-
-    // -------------------------------------------------- State Setup --------------------------------------------------
-    const [data, setData] = React.useState<EpicImage[]>([]);
-    const [url, setUrl] = React.useState<string>("");
-    // const [asteroidToday, setAsteroidToday] = React.useState<AsteroidToday[]>([]);
-    // if(data !== undefined) {
-    //     console.log(data.length);
-    // }
+    React.useEffect(() => {return () => {buildurl();}}, [data]);
 
 
     const buildurl = () => {
         let array = [];
+        console.log(data2);
         // add all dates to an array
-        for(let i = 0; i < data.length; i++){
-            array.push(data[i].date);
+        for(let i = 0; i < data2.length; i++){
+            array.push(data2[i].date);
         }
         let split = array[0].split(" ");
         console.log(split);
@@ -79,10 +80,11 @@ const EPIC = ({setLoading}:HomeProps) => {
         :
         <Container className="text-center">
             <h1 className="title">Most Recent EPIC Photos</h1>
-            <h2>there are {data.length} images</h2>
+            <h2>there are {data.length} image</h2>
             <h2>{url}</h2>
-            <h3>{data.map((images:EpicImage, n:number) =>{ return <div>{images.image}<img height={100} width={100} src={EPIC_IMAGE+url+"png/"+images.image+".png"}/></div> })}</h3>
+            <h3>{data.map((images:EpicImage, n:number) =>{ return <div key={n}>{images.image}<img height={100} width={100} src={EPIC_IMAGE+url+"png/"+images.image+".png"}/></div> })}</h3>
         </Container>
+
     );
 }
 
