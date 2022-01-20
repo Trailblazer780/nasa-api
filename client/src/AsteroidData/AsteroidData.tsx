@@ -45,7 +45,7 @@ const AsteroidData = ({setLoading}:HomeProps) => {
         <Container className="text-center">
             <h1 className="title">{data.name}</h1>
             <h3>Data About Asteroid:</h3>
-            <Button className="backButton" variant="secondary" onClick={() => history.goBack()}>Back</Button>
+            <div style={{textAlign: 'left'}}><Button className="backButton" variant="secondary" onClick={() => history.goBack()}>Back</Button></div>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>

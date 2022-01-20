@@ -23,7 +23,7 @@ const EPIC = ({setLoading}:HomeProps) => {
         setData(result);
         data2 = result;
         console.log(result);
-        setLoading(false);
+        // setLoading(false);
         // buildurl();
     };
 
@@ -38,7 +38,7 @@ const EPIC = ({setLoading}:HomeProps) => {
     // -------------------------------------------------- State Setup --------------------------------------------------
     const [data, setData] = React.useState<EpicImage[]>([]);
     const [url, setUrl] = React.useState<string>();
-    
+
     // ---------------------------------------------- lifecycle hooks ----------------------------------------------
     React.useEffect(() => {reRender();}, []);
     React.useEffect(() => {return () => {buildurl();}}, [data]);
@@ -61,15 +61,14 @@ const EPIC = ({setLoading}:HomeProps) => {
         return dateForUrl;
     }   
 
-    // const imagesLoaded = () => {
-    //     loaded++;
-    //     if (loaded === data.length) {
-    //         console.log("All images loaded");
-    //         setLoading(false);
-    //     } else {
-    //         loaded++;
-    //     }
-    // }
+    const imagesLoaded = () => {
+        if (loaded === data2.length) {
+            console.log("All images loaded");
+            setLoading(false);
+        } else {
+            loaded++;
+        }
+    }
 
     // ---------------------------------- render to the DOM
     return(
@@ -82,7 +81,7 @@ const EPIC = ({setLoading}:HomeProps) => {
             <h1 className="title">Most Recent EPIC Photos</h1>
             <h2>there are {data.length} image</h2>
             <h2>{url}</h2>
-            <h3>{data.map((images:EpicImage, n:number) =>{ return <div key={n}>{images.image}<img height={100} width={100} src={EPIC_IMAGE+url+"png/"+images.image+".png"}/></div> })}</h3>
+            <h3>{data.map((images:EpicImage, n:number) =>{ return <div key={n}>{images.image}<img onLoad={() => imagesLoaded()} height={100} width={100} src={EPIC_IMAGE+url+"png/"+images.image+".png"}/></div> })}</h3>
         </Container>
 
     );
