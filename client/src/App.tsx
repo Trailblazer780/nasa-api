@@ -10,6 +10,7 @@ import Asteroids from "./Asteroids/Asteroids";
 import AsteroidData from "./AsteroidData/AsteroidData";
 import MarsRoverPhotos from './MarsRoverPhotos/MarsRoverPhotos';
 import EPIC from './EPIC/EPIC';
+import SearchAsteroid from './SearchAsteroid/SearchAsteroid';
 
 
 
@@ -37,6 +38,7 @@ function App() {
             <Nav className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/asteroids">Near Earth Asteroids</Nav.Link>
+              <Nav.Link href="/asteroid-search">Search Asteroids</Nav.Link>
               <Nav.Link href="/epic">EPIC</Nav.Link>
               <Nav.Link href="/mars-rover-home">Mars Rover</Nav.Link>
             </Nav>
@@ -53,6 +55,7 @@ function App() {
         <Route path="/asteroid/:id" render={() => <AsteroidData setLoading={setLoading}/>} exact/>
         <Route path="/mars-rover-home" render={() => <MarsRoverPhotos setLoading={setLoading}/>}/>
         <Route path="/epic" render={() => <EPIC setLoading={setLoading}/>}/>
+        <Route path="/asteroid-search" render={() => <SearchAsteroid setLoading={setLoading}/>}/>
         <Route render={()=><Error/>}/>
 
       </Switch>
