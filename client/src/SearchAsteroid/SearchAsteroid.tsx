@@ -31,7 +31,6 @@ const SearchAsteroid = ({setLoading}:HomeProps) => {
     };
 
     // ---------------------------------------------- lifecycle hooks ----------------------------------------------
-    // React.useEffect(() => {reRender();}, []);
     React.useEffect(() => {load();}, []);
 
     // -------------------------------------------------- State Setup --------------------------------------------------
@@ -41,6 +40,17 @@ const SearchAsteroid = ({setLoading}:HomeProps) => {
     const handleAsteroidIdChange = (e: any) => {
         neo_reference_id = e;
         console.log(neo_reference_id);
+        getstuff();
+    }
+
+    const getstuff = () => {
+        console.log(neo_reference_id);
+        return neo_reference_id;
+    }
+
+    const searchAsteroid = () => {
+        // make browser go to the next page
+        window.location.href = "asteroid/"+neo_reference_id;
     }
 
 
@@ -52,7 +62,8 @@ const SearchAsteroid = ({setLoading}:HomeProps) => {
                     <Form.Label htmlFor="search">Enter the Neo Asteroid ID below:</Form.Label>
                     <div id="asteroidtext"><Form.Control type="text" id="search" className="text-center" placeholder="NEO Asteroid ID" onChange={(e:any) => handleAsteroidIdChange(e.target.value)}/></div>
                     <Form.Text muted>This will only work with the neo reference id of the asteroid</Form.Text>
-                    <div><Link to={`/asteroid/${neo_reference_id}`}><Button id="btnOk" variant="secondary">Search</Button>{' '}</Link></div>
+                    {/* <div><Link to={neo_reference_id}><Button id="btnOk" variant="secondary">Search</Button>{' '}</Link></div> */}
+                    <div><Button id="btnOk" variant="secondary" onClick={searchAsteroid}>Search</Button></div>
                 </Form.Group>
             </Form>
         </Container>

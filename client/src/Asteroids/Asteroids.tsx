@@ -27,24 +27,9 @@ const Asteroids = ({setLoading}:HomeProps) => {
     };
 
     const getDate = () => {
-        // let monthString:string = "";
-        // let date:Date = new Date();
-        // let day:number = date.getDate();
-        // let month:number = date.getMonth() + 1;
-        // if(month < 10){
-        //     monthString = "0" + month;
-        // }
-        // else{
-        //     monthString = month.toString();
-        // }
-        // let year = date.getFullYear();
-        // let fullDay = year + "-" + monthString + "-" + day;
-        // console.log(fullDay);
         var isoDateString = new Date().toISOString();
         let split = isoDateString.split("T");
-        // console.log(split[0]);
         let fullDay:string = split[0];
-        // console.log("testing:"+isoDateString);
         return fullDay;
     }
     
@@ -53,14 +38,12 @@ const Asteroids = ({setLoading}:HomeProps) => {
 
     // -------------------------------------------------- State Setup --------------------------------------------------
     const [data, setData] = React.useState<AsteroidTodayData>();
-    // const [asteroidToday, setAsteroidToday] = React.useState<AsteroidToday[]>([]);
 
     let data2;
     if(data !== undefined) {
         data2 = data.near_earth_objects[getDate()];
     }
-
-    // let data2 = data.near_earth_objects['2022-01-17'];
+    
     // ---------------------------------- render to the DOM
     return(
         (data === undefined  || data2 === undefined) ?
