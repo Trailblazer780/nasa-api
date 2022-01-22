@@ -93,7 +93,7 @@ const EPIC = ({setLoading}:HomeProps) => {
         <Container className="text-center">
             <h1 className="title">Most Recent EPIC Photos</h1>
             <h3>These images were taken by Nasa's EPIC camera onboard the NOAA DSCOVR spacecraft</h3>
-            <h3>{data.map((images:EpicImage, n:number) =>{ return <div key={n}><img onLoad={() => imagesLoaded()} height={500} width={500} src={EPIC_IMAGE+url+"png/"+images.image+".png"}/></div> })}</h3>
+            <h3>{data.map((images:EpicImage, n:number) =>{ return <div key={n}><img className="epic" onLoad={() => imagesLoaded()} height={500} width={500} src={EPIC_IMAGE+url+"png/"+images.image+".png"}/></div> })}</h3>
         </Container>
 
     );

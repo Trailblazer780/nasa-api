@@ -1,1 +1,17 @@
 @import "./../globals.scss";
+
+@media only screen and (max-width: 768px) {
+    img.epic{
+        width: 100%;
+        height: 100%;
+        // border: #cccccc solid 3px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    img.epic{
+        width: 100%;
+        height: 100%;
+        // border: #cccccc solid 3px;
+    }
+}
