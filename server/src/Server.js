@@ -5,6 +5,7 @@ let MongoClient = require("mongodb").MongoClient;
 let sanitizer = require('express-sanitizer');
 let ObjectId = require('mongodb').ObjectId;
 
+
 // MongoDB constants
 const URL = "mongodb://mongo:27017/";
 const DB_NAME = "dbData";
@@ -27,4 +28,5 @@ app.use((request, response) => {
     response.sendFile(path.join(CLIENT_BUILD_PATH, 'index.html'));
 });
 
-app.listen(80, () => console.log("Listening on port 8080"));
+app.listen(80, () => console.log("Listening on port 80"));
+app.listen(443, () => console.log("Listening on port 443"));

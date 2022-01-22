@@ -14,6 +14,7 @@ services:
     container_name: my-production-server
     ports:
       - "80:80"
+      - "443:443"
     environment:
       NODE_ENV: production
     depends_on:
