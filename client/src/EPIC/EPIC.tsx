@@ -23,7 +23,7 @@ const EPIC = ({setLoading}:HomeProps) => {
     const onResponse = (result:any) => {
         setData(result);
         data2 = result;
-        console.log(result);
+        // console.log(result);
         // setLoading(false);
         // buildurl();
     };
@@ -51,32 +51,32 @@ const EPIC = ({setLoading}:HomeProps) => {
 
     const buildurl = () => {
         let array = [];
-        console.log(data2);
+        // console.log(data2);
         // add all dates to an array
         for(let i = 0; i < data2.length; i++){
             array.push(data2[i].date);
         }
         let split = array[0].split(" ");
-        console.log(split);
+        // console.log(split);
         let split2 = split[0].split("-");
-        console.log(split2);
+        // console.log(split2);
         dateForUrl = split2[0] + "/" + split2[1] + "/" + split2[2] + "/";
         setUrl(dateForUrl);
-        console.log(dateForUrl);
+        // console.log(dateForUrl);
         return dateForUrl;
     }
 
     const getPictureFrom = () => {
         if(data2.length > 0){
             pictureFrom = data2[0].caption;
-            console.log(pictureFrom);
+            // console.log(pictureFrom);
             setPictureFrom2(pictureFrom);
         }
     }
 
     const imagesLoaded = () => {
         if (loaded === data2.length) {
-            console.log("All images loaded");
+            // console.log("All images loaded");
             setLoading(false);
         } else {
             loaded++;

@@ -16,7 +16,7 @@ const Asteroids = ({setLoading}:HomeProps) => {
     // ---------------------------------------------- event handlers ----------------------------------------------
     const onResponse = (result:AsteroidTodayData) => {
         setData(result);
-        console.log(result);
+        // console.log(result);
         setLoading(false);
     };
 

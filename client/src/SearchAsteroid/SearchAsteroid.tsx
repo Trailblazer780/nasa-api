@@ -15,7 +15,7 @@ const SearchAsteroid = ({setLoading}:HomeProps) => {
 
     const onResponse = (result:any) => {
         setData(result);
-        console.log(result);
+        // console.log(result);
         setLoading(false);
     };
 
@@ -39,12 +39,12 @@ const SearchAsteroid = ({setLoading}:HomeProps) => {
     // -------------------------------------------------- Event Handlers --------------------------------------------------
     const handleAsteroidIdChange = (e: any) => {
         neo_reference_id = e;
-        console.log(neo_reference_id);
+        // console.log(neo_reference_id);
         getstuff();
     }
 
     const getstuff = () => {
-        console.log(neo_reference_id);
+        // console.log(neo_reference_id);
         return neo_reference_id;
     }
 
