@@ -51,7 +51,8 @@ const Asteroids = ({setLoading}:HomeProps) => {
                 <div>Sorry no Near Earth Asteroid Data right now.</div>
             </div>
         :
-        <Container className="text-center">
+        <>
+        <Container id="desktopasteroid" className="text-center">
             <h1 className="title">Asteroids Near Earth Right Now: {data.element_count}</h1>
             <Table striped bordered hover variant="dark">
                 <thead>
@@ -74,6 +75,28 @@ const Asteroids = ({setLoading}:HomeProps) => {
                 </tbody>
             </Table>
         </Container>
+        <Container id="mobileasteroid" className="text-center">
+            <h1 className="title">Asteroids Near Earth Right Now: {data.element_count}</h1>
+            <Table striped bordered hover variant="dark">
+                <thead>
+                    <tr>
+                        <th>Asteroid ID</th>
+                        <th>Asteroid Name</th>
+                        <th>Asteroid Velocity (Km/h)</th>
+                        <th>Asteroid Distance (km)</th>
+                        {/* <th>Potentially Hazardous</th> */}
+                    </tr>
+                </thead>
+                <tbody>
+                    {data2.map((asteroid:Asteroid, x:number) => {return <tr key={x}><td><Link to={`asteroid/`+asteroid.id}>{asteroid.id}</Link></td>
+                    <td>{asteroid.name}</td>
+                    {asteroid.close_approach_data.map((closeApproach:CloseApproach, y:number) => {let velocity = parseFloat(closeApproach.relative_velocity.kilometers_per_hour).toFixed(2); return <td key={y}>{velocity}</td>})}
+                    {/* <td>{asteroid.estimated_diameter.kilometers.estimated_diameter_max.toFixed(2)}</td> */}
+                    {asteroid.close_approach_data.map((closeApproach:any, z:number) => {/*let distance = parseFloat(closeApproach.miss_distance.kilometers).toFixed(2); return <td key={z}>{distance}</td>})}*/})}
+                    {asteroid.is_potentially_hazardous_asteroid ? <td style={{color: "red"}}>Yes</td> : <td style={{color: "green"}}>No</td>}</tr>})}
+                </tbody>
+            </Table>
+        </Container></>
     );
 }
 

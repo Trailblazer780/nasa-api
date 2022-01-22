@@ -12,3 +12,32 @@ a:visited {
 a:hover {
     color: #157347;
 }
+
+#mobileasteroid{
+    display: none;
+}
+
+
+@media only screen and (max-width: 768px) {
+    #mobileasteroid{
+        display:block;
+        width: 100%;
+        height: 100%;
+        // border: #cccccc solid 3px;
+    }
+    #desktopasteroid{
+        display:none;
+    }
+}
+
+// @media only screen and (max-width: 1024px) {
+//     #mobileasteroid{
+//         display:none;
+//         width: 100%;
+//         height: 100%;
+//         // border: #cccccc solid 3px;
+//     }
+//     #desktopasteroid{
+//         display: block;
+//     }
+// }
