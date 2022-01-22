@@ -31,7 +31,7 @@ function App() {
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" sticky="top">
           <Container>
             <Navbar.Brand href="/">
-              <img alt="" src={logo} width="50" height="50" className="d-inline-block align-center"/>{' '} EWFD - Nasa
+              <img alt="" src={logo} width="50" height="50" className="d-inline-block align-center"/>{' '} EFWD - Nasa
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
