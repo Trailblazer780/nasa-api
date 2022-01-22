@@ -4,6 +4,7 @@ import {Link, useParams } from 'react-router-dom';
 import { Container, Table } from 'react-bootstrap';
 import { HomeProps, AsteroidTodayData, Asteroid, CloseApproach} from '../tools/data.model';
 import { getJSONData } from "./../tools/Toolkit";
+import { faDove } from '@fortawesome/free-solid-svg-icons';
 
 
 const API_KEY:string = "YebcvNe2gk1kOzI5NxfnX0hhfwSVg4BV7mY9sFrE";
@@ -77,6 +78,7 @@ const Asteroids = ({setLoading}:HomeProps) => {
         </Container>
         <Container id="mobileasteroid" className="text-center">
             <h1 className="title">Asteroids Near Earth Right Now: {data.element_count}</h1>
+            <div>To see full details of the asteroid click on the asteroid ID</div>
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
