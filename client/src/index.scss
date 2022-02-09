@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'Obitron';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/Obitron/Orbitron.ttf');
+}
+
+.main{
+  font-family: 'Obitron';
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

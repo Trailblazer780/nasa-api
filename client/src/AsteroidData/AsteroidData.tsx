@@ -43,7 +43,7 @@ const AsteroidData = ({setLoading}:HomeProps) => {
             </div>
         :
         <Container className="text-center">
-            <h1 className="title">{data.name}</h1>
+            <h1 className="title" style={{padding: '10px'}}>{data.name}</h1>
             <h3>Data About Asteroid:</h3>
             <div style={{textAlign: 'left'}}><Button className="backButton" variant="secondary" onClick={() => history.goBack()}>Back</Button></div>
             <Table striped bordered hover variant="dark">
@@ -80,8 +80,8 @@ const AsteroidData = ({setLoading}:HomeProps) => {
                 {/* <tr><td></td><td></td></tr> */}
                     {data.close_approach_data.map((closeApproach:CloseApproach, n:number) => {
                         return <tr key={n}><td>{closeApproach.close_approach_date_full}</td>
-                        <td>{parseFloat(closeApproach.relative_velocity.kilometers_per_hour).toFixed(2)}</td>
-                        <td>{parseFloat(closeApproach.miss_distance.kilometers).toFixed(2)}</td>
+                        <td>{parseFloat(closeApproach.relative_velocity.kilometers_per_hour).toFixed(0)}</td>
+                        <td>{parseFloat(closeApproach.miss_distance.kilometers).toFixed(0)}</td>
                         <td>{closeApproach.orbiting_body}</td></tr>
                     })}
                     

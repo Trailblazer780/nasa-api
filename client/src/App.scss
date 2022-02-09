@@ -1,9 +1,19 @@
 @import "./_globals.scss";
 
+@font-face {
+    font-family: 'Obitron';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./fonts/Obitron/Orbitron.ttf');
+}
+
 div.footer{
     text-align: center;
     padding-bottom: 20px;
     padding-top: 20px;
+}
+body{
+    font-family: 'Obitron';
 }
 
 header {

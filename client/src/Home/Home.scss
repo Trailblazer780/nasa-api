@@ -1,36 +1,46 @@
 @import "./../globals.scss";
 
+@font-face {
+    font-family: 'Obitron';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/Obitron/Orbitron.ttf');
+}
+
 h1.title {
+    font-family: 'Obitron';
     columns: #ffffff;
     color: white;
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-    text-shadow: 2px 2px 5px white;
 }
+
 h3.title {
+    font-family: 'Obitron';
     columns: #ffffff;
     color: white;
-    font-family: 'Times New Roman', Times, serif;
-    text-shadow: 2px 2px 5px white;
 }
 
 div.picture-title {
+    font-family: 'Obitron';
     columns: #ffffff;
     color: white;
     text-align: center;
     font-size: 30px;
-    font-family: 'Times New Roman', Times, serif;
-    text-shadow: 2px 2px 5px #cccccc;
+    // text-shadow: 2px 2px 5px #cccccc;
     padding-bottom: 10px;
 }
 
 div.picture-explanation{
+    font-family: 'Obitron';
     columns: #ffffff;
     color: white;
     text-align: center;
     font-size: 30px;
-    font-family: 'Times New Roman', Times, serif;
-    text-shadow: 2px 2px 5px #cccccc;
+}
+
+div.picture-explanation-text {
+    font-family: 'Obitron';
+    font-size: large;
 }
 
 img.APOD{
@@ -43,6 +53,10 @@ img.APOD{
         height: 100%;
         border: #cccccc solid 3px;
     }
+    iframe.APOD{
+        width: 100%;
+        height: 500px;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
@@ -50,5 +64,9 @@ img.APOD{
         width: 100%;
         height: 100%;
         border: #cccccc solid 3px;
+    }
+    iframe.APOD{
+        width: 100%;
+        height: 500px;
     }
 }
