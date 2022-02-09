@@ -21,8 +21,11 @@ const AsteroidData = ({setLoading}:HomeProps) => {
         setLoading(false);
     };
 
-    const onError = () => console.log("*** Error has occured during AJAX data transmission");
-
+    const onError = () => {
+        console.log("*** Error has occured during AJAX data transmission");
+        setFailed("failed");
+        setLoading(false);
+    }
     const reRender = () => {
         setLoading(true);
         getJSONData(ASTEROID_DATA, onResponse, onError);
@@ -33,13 +36,14 @@ const AsteroidData = ({setLoading}:HomeProps) => {
 
     // -------------------------------------------------- State Setup --------------------------------------------------
     const [data, setData] = React.useState<Asteroid>();
+    const [failed, setFailed] = React.useState<String>("");
     // const [asteroidToday, setAsteroidToday] = React.useState<AsteroidToday[]>([]);
 
     // ---------------------------------- render to the DOM
     return(
-        (data === undefined) ?
+        (data === undefined || failed === "failed") ?
             <div className="content">
-                <div>Sorry no Near Earth Asteroid Data right now.</div>
+                <div>Sorry no Asteroid data right now or Asteroid does not exist.</div>
             </div>
         :
         <Container className="text-center">

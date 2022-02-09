@@ -35,7 +35,7 @@ function App() {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav variant="tabs" className="me-auto">
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/asteroids">Near Earth Asteroids</Nav.Link>
               <Nav.Link href="/asteroid-search">Search Asteroids</Nav.Link>

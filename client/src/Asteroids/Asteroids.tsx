@@ -55,7 +55,7 @@ const Asteroids = ({setLoading}:HomeProps) => {
         <>
         <Container id="desktopasteroid" className="text-center">
             <h1 className="title" style={{padding: '10px'}}>Asteroids Near Earth Right Now: {data.element_count}</h1>
-            <Table striped bordered hover variant="dark">
+            <Table style={{borderRadius: '5px'}} className="table" striped bordered hover variant="dark">
                 <thead>
                     <tr>
                         <th>Asteroid ID</th>
