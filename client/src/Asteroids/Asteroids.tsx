@@ -8,7 +8,7 @@ import { faDove } from '@fortawesome/free-solid-svg-icons';
 
 
 const API_KEY:string = "YebcvNe2gk1kOzI5NxfnX0hhfwSVg4BV7mY9sFrE";
-const NEOW_SCRIPT:string = "http://www.neowsapp.com/rest/v1/feed/today";
+const NEOW_SCRIPT:string = "https://www.neowsapp.com/rest/v1/feed/today";
 const APOD_SCRIPT:string = "https://api.nasa.gov/planetary/apod?api_key=" + API_KEY;
 
 const Asteroids = ({setLoading}:HomeProps) => {
