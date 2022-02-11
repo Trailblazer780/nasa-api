@@ -85,8 +85,8 @@ const Asteroids = ({setLoading}:HomeProps) => {
                         <th>Asteroid ID</th>
                         <th>Asteroid Name</th>
                         <th>Asteroid Velocity (Km/h)</th>
-                        <th>Asteroid Distance (km)</th>
-                        {/* <th>Potentially Hazardous</th> */}
+                        {/* <th>Asteroid Distance (km)</th> */}
+                        <th>Potentially Hazardous</th>
                     </tr>
                 </thead>
                 <tbody>
